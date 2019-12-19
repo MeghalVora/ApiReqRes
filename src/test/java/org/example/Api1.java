@@ -22,6 +22,7 @@ public class Api1 {
                 .body("page",is(2))
                 .body("total",is(12));
 
+
                 response.prettyPrint();
 
     }
@@ -141,6 +142,13 @@ public void loginUnsuccessful(){
                 .post("https://reqres.in/api/login");
         response.then().statusCode(400)
                 .body("error",is("Missing password"));
+        response.prettyPrint();
+}
+@Test
+public void addTestRep(){
+        Response response=given()
+                .when().get("https://jsonplaceholder.typicode.com/posts");
+        response.then().body("userId",hasItems(1));
         response.prettyPrint();
 }
 
